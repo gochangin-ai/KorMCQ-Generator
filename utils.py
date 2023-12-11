@@ -29,17 +29,32 @@ def get_table_data(quiz_str):
         quiz_dict = json.loads(quiz_str)
         quiz_table_data = []
         # Iterate over the quiz dictionary and extract the required information
+
         for key, value in quiz_dict.items():
-            mcq = value["mcq"]
-            options = " | ".join(
-                [
-                    f"{option}: {option_value}"
-                    for option, option_value in value["options"].items()
-                ]
-            )
-            correct = value["correct"]
-            description = value["description"]
-            quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct,"Solution":description})
+            if "mcq" in value:
+                mcq = value["mcq"]
+                options = " | ".join(
+                    [
+                        f"{option}: {option_value}"
+                        for option, option_value in value["options"].items()
+                    ]
+                )
+                correct = value["correct"]
+                description = value["description"]
+                quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct,"Solution":description})
+            elif "tf" in value:
+                # Process true/false question
+                tf_question = value["tf"]
+                tf_correct = value["correct"]
+                tf_description = value["description"]
+                quiz_table_data.append({"Question": tf_question, "Correct": tf_correct, "Solution": tf_description})
+            elif "ShortAnswer" in value:
+                # Process shortanswer
+                ShortAnswer_question = value["ShortAnswer"]
+                ShortAnswer_correct = value["correct"]
+                ShortAnswer_description = value["description"]
+                quiz_table_data.append({"Question": ShortAnswer_question, "Correct": ShortAnswer_correct, "Solution": ShortAnswer_description})
+
         return quiz_table_data
     except Exception as e:
         traceback.print_exception(type(e), e, e.__traceback__)
@@ -80,6 +95,48 @@ RESPONSE_JSON = {
             "c": "choice here",
             "d": "choice here",
         },
+        "correct": "correct answer",
+        "description":"Solution Description",
+    },
+}
+
+RESPONSE_JSON_TF = {
+    "1": {
+        "no": "1",
+        "tf": "true or false question",
+        "correct": "correct answer",
+        "description":"Solution Description",
+    },
+    "2": {
+        "no": "2",
+        "tf": "true or false question",
+        "correct": "correct answer",
+        "description":"Solution Description",
+    },
+    "3": {
+        "no": "3",
+        "tf": "true or false question",
+        "correct": "correct answer",
+        "description":"Solution Description",
+    },
+}
+
+RESPONSE_JSON_ShortAnswer = {
+    "1": {
+        "no": "1",
+        "ShortAnswer": "ShortAnswer question",
+        "correct": "correct answer",
+        "description":"Solution Description",
+    },
+    "2": {
+        "no": "2",
+        "ShortAnswer": "ShortAnswer question",
+        "correct": "correct answer",
+        "description":"Solution Description",
+    },
+    "3": {
+        "no": "3",
+        "ShortAnswer": "ShortAnswer question",
         "correct": "correct answer",
         "description":"Solution Description",
     },
