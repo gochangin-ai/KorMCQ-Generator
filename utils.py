@@ -38,7 +38,8 @@ def get_table_data(quiz_str):
                 ]
             )
             correct = value["correct"]
-            quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct})
+            description = value["description"]
+            quiz_table_data.append({"MCQ": mcq, "Choices": options, "Correct": correct,"Solution":description})
         return quiz_table_data
     except Exception as e:
         traceback.print_exception(type(e), e, e.__traceback__)
@@ -56,6 +57,7 @@ RESPONSE_JSON = {
             "d": "choice here",
         },
         "correct": "correct answer",
+        "description":"Solution Description",
     },
     "2": {
         "no": "2",
@@ -67,6 +69,7 @@ RESPONSE_JSON = {
             "d": "choice here",
         },
         "correct": "correct answer",
+        "description":"Solution Description",
     },
     "3": {
         "no": "3",
@@ -78,5 +81,6 @@ RESPONSE_JSON = {
             "d": "choice here",
         },
         "correct": "correct answer",
+        "description":"Solution Description",
     },
 }
