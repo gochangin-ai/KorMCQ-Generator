@@ -1,6 +1,6 @@
 # KorQA-Generator
 
-KorMCQ-Generator is a project that utilizes LangChain to comprehend Korean documents and generate diverse Multiple-Choice Questions (MCQs), True or False Questions (TF), short-answer questions(SAQs).
+KorQA-Generator is a project that utilizes LangChain to comprehend Korean documents and generate diverse Multiple-Choice Questions (MCQs), True or False Questions (TF), short-answer questions(SAQs).
 
 # Langchain-Series
 
