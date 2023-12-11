@@ -1,3 +1,7 @@
+# KorMCQ-Generator
+
+KorMCQ-Generator is a project that utilizes LangChain to comprehend Korean documents and generate diverse Multiple-Choice Questions (MCQs).
+
 # Langchain-Series
 
 The "langchain-series" project is a collection of diverse little apps that demonstrate the practical applications of AI chatbots in real-world scenarios. Each app within the series showcases the capabilities of chatbot technologies in different domains, providing users with interactive and engaging experiences.
